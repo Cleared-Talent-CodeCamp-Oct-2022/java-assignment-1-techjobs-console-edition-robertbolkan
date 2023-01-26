@@ -1,7 +1,10 @@
+//import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.List;
 
 /**
  * Created by LaunchCode
@@ -39,6 +42,7 @@ public class TechJobs {
                 String columnChoice = getUserSelection("List", columnChoices);
 
                 if (columnChoice.equals("all")) {
+
                     printJobs(JobData.findAll());
                 } else {
 
@@ -60,9 +64,10 @@ public class TechJobs {
                 // What is their search term?
                 System.out.println("\nSearch term:");
                 String searchTerm = in.nextLine();
+//                searchTerm = searchTerm.toLowerCase();
 
                 if (searchField.equals("all")) {
-                    printJobs(JobData.findByValue(searchTerm));
+                    printJobs(JobData.findByValue(searchTerm) );
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
                 }
@@ -119,7 +124,31 @@ public class TechJobs {
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
+//if all (0) is selected. must print them all out.
 
-        System.out.println("printJobs is not implemented yet");
+
+
+
+        if (someJobs.size() == 0) {
+            System.out.println("No Results");
+        } else {
+            for (HashMap<String, String> job : someJobs) {
+                System.out.println();
+                System.out.println("*****");
+                System.out.println("position type: " + job.get("position type"));
+                System.out.println("name: " + job.get("name"));
+                System.out.println("employer: " + job.get("employer"));
+                System.out.println("location: " + job.get("location"));
+                System.out.println("core competency: " + job.get("core competency"));
+                System.out.println("*****");
+            }
+        }
     }
-}
+
+
+
+
+
+
+    }
+

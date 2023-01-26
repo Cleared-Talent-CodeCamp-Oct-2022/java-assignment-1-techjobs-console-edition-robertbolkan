@@ -12,7 +12,14 @@ Search by:
 4 - Skill
 
 Search term:
-No Results
+
+*****
+position type: Web - Full Stack
+name: Full Stack Developer
+employer: Buzzbold
+location: Saint Louis
+core competency: Javascript
+*****
 
 View jobs by (type 'x' to quit):
 0 - Search
