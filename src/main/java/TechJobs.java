@@ -43,7 +43,7 @@ public class TechJobs {
 
                 if (columnChoice.equals("all")) {
 
-                    printJobs(JobData.findAll(), null, null);
+                    printJobs(JobData.findAll());
                 } else {
 
                     ArrayList<String> results = JobData.findAll(columnChoice);
@@ -67,9 +67,9 @@ public class TechJobs {
 //                searchTerm = searchTerm.toLowerCase();
 
                 if (searchField.equals("all")) {
-                    printJobs(JobData.findByValue(searchTerm),searchTerm, searchField );
+                    printJobs(JobData.findByValue(searchTerm) );
                 } else {
-                    printJobs(JobData.findByColumnAndValue(searchField, searchTerm), searchTerm, searchField);
+                    printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
                 }
             }
         }
@@ -123,38 +123,23 @@ public class TechJobs {
     }
 
     // Print a list of jobs
-    private static void printJobs(ArrayList<HashMap<String, String>> someJobs, String searchTerm, String searchField) {
+    private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 //if all (0) is selected. must print them all out.
 
 
 
 
-        ArrayList<String> jobNames = new ArrayList<>();
-        if(searchTerm==null){
-            System.out.println("\n*** All " + "Job" + " Values ***");
-            for (String job : JobData.findAll("name")) {
-                if(!jobNames.contains(job)){
-                    jobNames.add(job);
-
-
-            }
-
-            }
-                    for (String name :jobNames){
-                        System.out.println(name);
-                    }
+        if (someJobs.size() == 0) {
+            System.out.println("No Results");
         } else {
-            if (someJobs.size()== 0){
-                System.out.println("No Results");
-            }
             for (HashMap<String, String> job : someJobs) {
                 System.out.println();
                 System.out.println("*****");
-                System.out.println("position type: "+job.get("position type"));
-                System.out.println("name: "+job.get("name"));
-                System.out.println("employer: "+job.get("employer"));
-                System.out.println("location: "+job.get("location"));
-                System.out.println("core competency: "+job.get("core competency"));
+                System.out.println("position type: " + job.get("position type"));
+                System.out.println("name: " + job.get("name"));
+                System.out.println("employer: " + job.get("employer"));
+                System.out.println("location: " + job.get("location"));
+                System.out.println("core competency: " + job.get("core competency"));
                 System.out.println("*****");
             }
         }
